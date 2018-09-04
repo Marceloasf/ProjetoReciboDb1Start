@@ -49,4 +49,20 @@ public class UfTest {
 		manager.persist(uf);
 		manager.getTransaction().commit();
 	}
+	
+	@Test
+	public void insertTest(){
+		Query c = manager.createQuery("from cidade where nome = :pNome");
+		c.setParameter("pNome", "Cianorte");
+		c.setMaxResults(1);
+		Cidade cidade = (Cidade) c.getSingleResult();
+		
+		System.out.println(cidade);
+		
+		cidade.setNome("Campo Mourão");
+		manager.getTransaction().begin();
+		manager.persist(cidade);
+		manager.getTransaction().commit();
+		
+	}
 }
