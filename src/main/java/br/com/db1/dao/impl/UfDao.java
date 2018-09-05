@@ -28,6 +28,7 @@ public class UfDao implements DAO<Uf> {
 		return (Uf) q.getSingleResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Uf> findByName(String name) {
 		Query q = manager.createQuery("from uf where nome = :pNome");
 		q.setParameter("pNome", name);
